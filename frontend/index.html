@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal Art Portfolio Submission Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .artwork { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        .artwork-title { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Submit Your Artwork</h1>
+
+    <label for="title"></label><input type="text" id="title" placeholder="Title" required>
+    <br><br>
+    <label for="description"></label><textarea id="description" placeholder="Description"></textarea>
+    <br><br>
+    <button id="submit">Submit Artwork</button>
+
+    <h2>Submitted Artworks</h2>
+    <div id="artworks"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

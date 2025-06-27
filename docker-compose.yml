@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    image: andonovasofija24/art-portfolio-backend:latest
+    container_name: art-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=art_portfolio
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    image: andonovasofija24/art-portfolio-frontend:latest
+    container_name: art-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:14
+    container_name: art-db
+    environment:
+      - POSTGRES_DB=art_portfolio
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data:
