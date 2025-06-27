@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import psycopg2
 import os
@@ -27,6 +27,16 @@ CREATE TABLE IF NOT EXISTS artworks (
 );
 """)
 conn.commit()
+
+
+@app.route('/')
+def index():
+    return send_from_directory('frontend', 'index.html')
+
+
+@app.route('/<path:path>')
+def static_proxy(path):
+    return send_from_directory('frontend', path)
 
 
 @app.route('/api/artworks', methods=['GET'])
