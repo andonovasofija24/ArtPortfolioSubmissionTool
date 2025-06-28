@@ -43,7 +43,7 @@
 3. Направете deployment на Kubernetes кластер:
    ```bash
    kubectl apply -f manifests/ -n art-portfolio
-4. Пристапете ја апликацијата преку конфигурираниот Ingress.
+4. Пристапете ја апликацијата преку конфигурираниот Ingress: http://art-portfolio.com:31588/
 
 ## Дополнителни информации
 CI pipeline се активира при push на гранки и автоматски гради и пушта ажурирани Docker images.
