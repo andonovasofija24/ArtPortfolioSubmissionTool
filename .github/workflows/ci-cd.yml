@@ -29,7 +29,8 @@ jobs:
       - name: Build and push Backend image
         uses: docker/build-push-action@v5
         with:
-          context: ./backend
+          context: .
+          file: ./backend/Dockerfile
           push: true
           tags: ${{ env.IMAGE_NAME_BACKEND }}:latest
 
@@ -39,20 +40,3 @@ jobs:
           context: ./frontend
           push: true
           tags: ${{ env.IMAGE_NAME_FRONTEND }}:latest
-
-  deploy:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: SSH Deploy to Remote Server
-        uses: apple boy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /path/to/deployment/folder
-            docker-compose pull
-            docker-compose up -d
