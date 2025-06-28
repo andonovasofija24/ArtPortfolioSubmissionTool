@@ -42,7 +42,7 @@
    docker-compose up --build
 3. Направете deployment на Kubernetes кластер:
    ```bash
-   kubectl apply -f manifests/ -n art-portfolio
+   kubectl apply -f manifests/
 4. Пристапете ја апликацијата преку конфигурираниот Ingress: http://art-portfolio.com:31588/
 
 ## Дополнителни информации
